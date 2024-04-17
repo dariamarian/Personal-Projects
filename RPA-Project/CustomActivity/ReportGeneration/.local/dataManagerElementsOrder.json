@@ -1,0 +1,56 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ReportGeneration.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "resultDT&Sequence_1",
+        "index&Sequence_2",
+        "manageSheet&Sequence_3",
+        "name&Sequence_3",
+        "positive&Sequence_3",
+        "negative&Sequence_3",
+        "neutral&Sequence_3",
+        "currentSheet&Sequence_5",
+        "positivePercentage&Sequence_5",
+        "negativePercentage&Sequence_5",
+        "neutralPercentage&Sequence_5",
+        "indexRow&Sequence_5"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "commentsClassificationList",
+        "youtubeNameList"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Statistics.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "total&Sequence_1",
+        "positiveString&Sequence_4",
+        "negativeString&Sequence_6",
+        "neutralString&Sequence_8"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "positive",
+        "negative",
+        "neutral",
+        "positivePercentage",
+        "negativePercentage",
+        "neutralPercentage"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

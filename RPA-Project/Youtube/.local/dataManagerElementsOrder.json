@@ -1,0 +1,102 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "maxResults&Flowchart_1",
+        "maxResultsString&Flowchart_1",
+        "isStringAValidEmail&Sequence_17",
+        "numberOfValidEmails&Sequence_17",
+        "youtubeNameList&Flowchart_1",
+        "excelNames&Flowchart_1",
+        "commentsClassificationList&Flowchart_1",
+        "linkExists&Flowchart_1",
+        "outputVideo&Flowchart_1",
+        "addMoreLinks&Flowchart_1",
+        "youtubeLinkList&Flowchart_1",
+        "linkCount&Flowchart_1",
+        "isYoutubeLinkValid&Flowchart_1",
+        "retryYoutubeLink&Flowchart_1",
+        "youtubeLink&Flowchart_1",
+        "isEmailValid&Flowchart_1",
+        "wantsOnEmail&Flowchart_1",
+        "userEmail&Flowchart_1",
+        "retryIntroduceEmail&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CommentsClassification.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "auxDict&Sequence_1",
+        "commentClassification&Sequence_1",
+        "jsonComments&Sequence_1",
+        "fetchedComments&Sequence_1",
+        "videoId&Sequence_1",
+        "comments&Sequence_1",
+        "youtubeApiKey&Sequence_1",
+        "requestLink&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "commentsClassificationList",
+        "youtubeLinkList"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Business Layers/GetVideoNames.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "requestLink&Sequence_1",
+        "youtubeApiKey&Sequence_1",
+        "title&Sequence_1",
+        "jsonData&Sequence_1",
+        "fetchedData&Sequence_1",
+        "videoId&Sequence_1",
+        "auxDict&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "youtubeLinkList",
+        "youtubeNameList"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Business Layers/CommentsClassification.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "nextPageToken&Sequence_1",
+        "commentsAdded&Sequence_1",
+        "requestLink&Sequence_1",
+        "youtubeApiKey&Sequence_1",
+        "comments&Sequence_1",
+        "jsonComments&Sequence_1",
+        "fetchedComments&Sequence_1",
+        "videoId&Sequence_1",
+        "commentClassification&Sequence_1",
+        "auxDict&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "maxResults",
+        "youtubeLinkList",
+        "commentsClassificationList"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

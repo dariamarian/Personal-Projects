@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="20231113010100" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="app_user"/>
+            </not>
+        </preConditions>
+        <createTable tableName="app_user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_type" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20231116015800" author="daria">
+        <preConditions>
+            <tableExists tableName="app_user"/>
+            <columnExists tableName="app_user" columnName="user_type"/>
+        </preConditions>
+        <dropColumn tableName="app_user" columnName="user_type"/>
+    </changeSet>
+
+    <changeSet id="20231118015500" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ngo"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ngo">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20231118023001" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="ngo" columnName="contact"/>
+        </preConditions>
+        <modifyDataType tableName="ngo" columnName="contact" newDataType="varchar(512)"/>
+    </changeSet>
+
+    <changeSet id="20231113023305" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="ngo" columnName="name"/>
+            <columnExists tableName="ngo" columnName="website"/>
+        </preConditions>
+        <modifyDataType tableName="ngo" columnName="name" newDataType="varchar(512)"/>
+        <modifyDataType tableName="ngo" columnName="website" newDataType="varchar(512)"/>
+    </changeSet>
+
+    <changeSet id="20231118190501" author="oti">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="app_user"/>
+        </preConditions>
+        <insert tableName="app_user">
+            <column name="username" value="admin"/>
+            <column name="name" value="Admin Name"/>
+            <column name="password" value="admin"/>
+            <column name="email" value="admin@gmail.com"/>
+            <column name="address" value="Admin Address"/>
+            <column name="gender" value="MALE"/>
+            <column name="created_at" value="2023-11-13"/>
+            <column name="rating" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20240106015900" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="ngo"/>
+        </preConditions>
+        <addColumn tableName="ngo">
+            <column name="image" type="blob"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="20240106020501" author="daria">
+        <preConditions>
+            <tableExists tableName="ngo"/>
+            <columnExists tableName="ngo" columnName="image"/>
+        </preConditions>
+        <addColumn tableName="ngo">
+            <column name="new_image" type="bytea"></column>
+        </addColumn>
+        <sql>
+            UPDATE ngo
+            SET new_image = encode(lo_get(image), 'escape')::bytea
+            WHERE image IS NOT NULL;
+        </sql>
+        <dropColumn tableName="ngo" columnName="image"/>
+        <renameColumn tableName="ngo" oldColumnName="new_image" newColumnName="image"/>
+    </changeSet>
+
+    <changeSet id="20240106021800" author="daria">
+        <preConditions>
+            <tableExists tableName="ngo"/>
+            <not>
+                <columnExists tableName="ngo" columnName="image_url"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="ngo">
+            <column name="image_url" type="varchar(512)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="20240106022200" author="daria">
+        <preConditions>
+            <tableExists tableName="ngo"/>
+            <columnExists tableName="ngo" columnName="image_url"/>
+        </preConditions>
+        <sql>
+            UPDATE ngo
+            SET image_url = 'https://img.freepik.com/premium-vector/charity-abstract-logo-healthy-lifestyle_660762-34.jpg'
+            WHERE image_url IS NULL;
+        </sql>
+        <addNotNullConstraint tableName="ngo" columnName="image_url"/>
+    </changeSet>
+
+    <changeSet id="20230106024700" author="daria">
+        <preConditions>
+            <tableExists tableName="ngo"/>
+            <columnExists tableName="ngo" columnName="image"/>
+        </preConditions>
+        <dropColumn tableName="ngo" columnName="image"/>
+    </changeSet>
+
+</databaseChangeLog>
