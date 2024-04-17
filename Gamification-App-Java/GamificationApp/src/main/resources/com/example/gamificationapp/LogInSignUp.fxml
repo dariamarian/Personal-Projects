@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="206.0" style="-fx-background-color: B1018A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gamificationapp.controllers.LogInSignupController">
+   <children>
+      <AnchorPane fx:id="signupPane" prefHeight="432.0" prefWidth="439.0" style="-fx-background-color: B1018A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="63.0" layoutY="26.0" prefHeight="25.0" prefWidth="75.0" text="sign-up:" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="SignUpButton" layoutX="58.0" layoutY="247.0" mnemonicParsing="false" onAction="#onSignUpButtonAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="SIGN UP">
+               <font>
+                  <Font name="OCR A Extended" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="57.0" layoutY="86.0" prefHeight="23.0" prefWidth="98.0" text="Username:" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="59.0" layoutY="138.0" prefHeight="23.0" prefWidth="98.0" text="Password:" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="LogInButtonFromSignup" layoutX="60.0" layoutY="346.0" mnemonicParsing="false" onAction="#onLogInButtonFromSignupAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="LOG IN">
+               <font>
+                  <Font name="OCR A Extended" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="34.0" layoutY="315.0" prefHeight="23.0" prefWidth="149.0" text="Already a user?" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameSignupTextField" layoutX="31.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="143.0" style="-fx-background-radius: 20;" />
+            <Label layoutX="34.0" layoutY="184.0" prefHeight="23.0" prefWidth="149.0" text="Repeat password:" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="15.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordSignupTextField" layoutX="31.0" layoutY="160.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="143.0" style="-fx-background-radius: 20;" />
+            <PasswordField fx:id="repeatpasswordSignupTextField" layoutX="31.0" layoutY="210.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="143.0" style="-fx-background-radius: 20;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="loginPane" layoutY="7.0" prefHeight="432.0" prefWidth="439.0" style="-fx-background-color: B1018A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="7.0">
+         <children>
+            <Label layoutX="75.0" layoutY="27.0" prefHeight="25.0" prefWidth="68.0" text="log-in:" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameLoginTextField" layoutX="31.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="143.0" style="-fx-background-radius: 20;" />
+            <Button fx:id="LogInButton" layoutX="58.0" layoutY="247.0" mnemonicParsing="false" onAction="#onLogInButtonAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="LOG IN">
+               <font>
+                  <Font name="OCR A Extended" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="SignUpButtonFromLogin" layoutX="58.0" layoutY="345.0" mnemonicParsing="false" onAction="#onSignUpButtonFromLoginAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="SIGN UP">
+               <font>
+                  <Font name="OCR A Extended" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="55.0" layoutY="89.0" prefHeight="23.0" prefWidth="113.0" text="Username:" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="150.0" prefHeight="23.0" prefWidth="113.0" text="Password:" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="315.0" prefHeight="23.0" prefWidth="107.0" text="Not a user?" textFill="WHITE">
+               <font>
+                  <Font name="OCR A Extended" size="15.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordLoginTextField" layoutX="30.0" layoutY="181.0" style="-fx-background-radius: 20;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+#badgepane
+{
+    -fx-background-image: url("images/background2.jpg");
+    -fx-background-size: 675px 430px;
+    -fx-background-repeat: stretch;
+    -fx-background-image-position: center center;
+    -fx-background-opacity: 0.7;
+}
+
+#questpane
+{
+    -fx-background-image: url("images/background3.jpg");
+    -fx-background-size: 675px 430px;
+    -fx-background-repeat: stretch;
+    -fx-background-image-position: center center;
+    -fx-background-opacity: 0.7;
+}
+
+#names {
+    -fx-font-family: "OCR A Extended";
+    -fx-background-color:  #B1018A;
+    -fx-text-fill: white;
+}

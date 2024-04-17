@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: B1018A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gamificationapp.controllers.TicTacToeController">
+    <children>
+        <FlowPane layoutX="188.0" layoutY="115.0" prefHeight="232.0" prefWidth="232.0">
+            <children>
+                <Button fx:id="button1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button3" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button4" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button5" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button6" layoutX="85.0" layoutY="85.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button7" layoutX="160.0" layoutY="85.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button8" layoutX="10.0" layoutY="160.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+                <Button fx:id="button9" layoutX="85.0" layoutY="160.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: white;" textFill="#b1018a">
+               <font>
+                  <Font name="OCR A Extended" size="16.0" />
+               </font></Button>
+            </children>
+        </FlowPane>
+        <Text fx:id="winnerText" fill="WHITE" layoutX="171.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic-Tac-Toe" textAlignment="CENTER" wrappingWidth="259.33333333333326">
+            <font>
+                <Font name="OCR A Extended" size="39.0" />
+            </font>
+        </Text>
+        <Button layoutX="264.0" layoutY="361.0" mnemonicParsing="false" onAction="#restartGame" style="-fx-background-color: white; -fx-background-radius: 20;" text="Restart">
+         <font>
+            <Font name="OCR A Extended" size="14.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="199.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you will play as X and your friend as 0" textAlignment="CENTER" wrappingWidth="201.33331298828125">
+         <font>
+            <Font name="OCR A Extended" size="16.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>
