@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="20240328011300" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="favorite_trip"/>
+            </not>
+        </preConditions>
+        <createTable tableName="favorite_trip">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_trip" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_user" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240328011430" author="daria">
+        <preConditions>
+            <columnExists tableName="favorite_trip" columnName="id_trip"/>
+            <columnExists tableName="favorite_trip" columnName="id_user"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="favorite_trip"
+                                 baseColumnNames="id_trip"
+                                 constraintName="fk_favorite_trip_trip"
+                                 referencedTableName="trip"
+                                 referencedColumnNames="trip_id"/>
+        <addForeignKeyConstraint baseTableName="favorite_trip"
+                                 baseColumnNames="id_user"
+                                 constraintName="fk_favorite_trip_user"
+                                 referencedTableName="app_user"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="20240214004100" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="app_user"/>
+            </not>
+        </preConditions>
+        <createTable tableName="app_user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240214005630" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="app_user"/>
+        </preConditions>
+        <insert tableName="app_user">
+            <column name="username" value="admin"/>
+            <column name="name" value="Admin Name"/>
+            <column name="password" value="admin"/>
+            <column name="email" value="admin@gmail.com"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="created_at" value="2024-02-14"/>
+            <column name="description" value="Admin Description"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20240220015700" author="daria">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="location"/>
+            </not>
+        </preConditions>
+        <createTable tableName="location">
+            <column name="location_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240220020530" author="daria">
+        <preConditions>
+            <columnExists tableName="location" columnName="location_id"/>
+        </preConditions>
+        <addPrimaryKey tableName="location" columnNames="location_id"/>
+    </changeSet>
+
+    <changeSet id="20240223005900" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="attraction"/>
+            </not>
+        </preConditions>
+        <createTable tableName="attraction">
+            <column name="attraction_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="double"/>
+            <column name="url" type="varchar(255)"/>
+            <column name="location_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240223010330" author="daria">
+        <preConditions>
+            <columnExists tableName="attraction" columnName="location_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="attraction"
+                                 baseColumnNames="location_id"
+                                 referencedTableName="location"
+                                 referencedColumnNames="location_id"
+                                 constraintName="fk_attraction_location"/>
+    </changeSet>
+
+    <changeSet id="20230223010600" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="trip"/>
+            </not>
+        </preConditions>
+        <createTable tableName="trip">
+            <column name="trip_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="city" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20230223010730" author="daria">
+        <preConditions>
+            <columnExists tableName="trip" columnName="user_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="trip"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="app_user"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_trip_user"/>
+    </changeSet>
+
+    <changeSet id="20230223010900" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="trip_attraction"/>
+            </not>
+        </preConditions>
+        <createTable tableName="trip_attraction">
+            <column name="trip_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attraction_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20230223011030" author="daria">
+        <preConditions>
+            <columnExists tableName="trip_attraction" columnName="trip_id"/>
+            <columnExists tableName="trip_attraction" columnName="attraction_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="trip_attraction"
+                                 baseColumnNames="trip_id"
+                                 referencedTableName="trip"
+                                 referencedColumnNames="trip_id"
+                                 constraintName="fk_trip_attraction_trip_trip"/>
+        <addForeignKeyConstraint baseTableName="trip_attraction"
+                                 baseColumnNames="attraction_id"
+                                 referencedTableName="attraction"
+                                 referencedColumnNames="attraction_id"
+                                 constraintName="fk_trip_attraction_trip_attraction"/>
+    </changeSet>
+
+</databaseChangeLog>

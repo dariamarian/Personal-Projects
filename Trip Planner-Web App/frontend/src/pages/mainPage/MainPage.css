@@ -1,0 +1,66 @@
+.main-page {
+       background-color: ghostwhite;
+   }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.plan-a-trip {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 7px;
+}
+
+.plan-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.select-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.button-group {
+    margin: 12px 0;
+}
+
+.trip {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.select-attractions-restaurants-hotels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-picker-group {
+    display: flex;
+    align-items: center;
+}
+
+.date-line {
+    font-size: 24px;
+    color: #C26DBC;
+    font-weight: bold;
+}
+
+.suggestions-section {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}

@@ -1,0 +1,38 @@
+spring:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+      ddl-auto: none
+    open-in-view: false
+
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/travel_itinerary}
+    username: ${DATASOURCE_USER:postgres}
+    password: ${DATASOURCE_PASS:userdaria}
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:db.changelog/changelog-master.xml
+
+
+server:
+  port: 8080
+
+
+weather-api-key: ${WEATHER_API_KEY}
+travel-api-key: ${TRAVEL_API_KEY}
+
+openai:
+  model: gpt-3.5-turbo
+  api:
+    url: https://api.openai.com/v1/chat/completions
+    key: ${OPENAI_API_KEY}
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          DEBUG

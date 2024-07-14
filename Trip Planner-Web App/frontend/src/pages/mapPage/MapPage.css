@@ -1,0 +1,146 @@
+.map-page {
+    display: flex;
+    flex-direction: row;
+    height: 570px;
+    width: 100%;
+}
+
+.sidebar {
+    margin-bottom: 60px;
+    height: 460px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.map-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 80vh;
+    position: relative;
+    width: 770px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.map-container {
+    height: 455px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.legend {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Improving Input and Select Box Styles */
+.sidebar input, .sidebar select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s ease;
+}
+
+.sidebar input:focus, .sidebar select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #C26DBC, inset 0 2px 4px rgba(0,0,0,0.06); /* Focus color matching attractions */
+}
+
+/* Hover Effects for Inputs and Dropdowns */
+.sidebar input:hover, .sidebar select:hover {
+    box-shadow: 0 0 0 2px #C26DBC, inset 0 2px 4px rgba(0,0,0,0.06); /* Hover effect with attractions color */
+}
+
+/* Header Styles */
+.sidebar h4 {
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    border-bottom: 3px solid #C26DBC; /* Border color from attractions */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.legend-item:last-child {
+    margin-right: 0;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.title {
+    margin: 20px 0;
+    color: #333;
+    font-size: 40px;
+}
+
+.popup {
+    font-family: "nunito", sans-serif;
+}
+
+
+.legend-color.attractions {
+    background-color: #C26DBC;
+}
+
+.legend-color.restaurants {
+    background-color: #3CACAE;
+}
+
+.legend-color.hotels {
+    background-color: #F67474;
+}
+
+.dropdown:focus, .dropdown:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+

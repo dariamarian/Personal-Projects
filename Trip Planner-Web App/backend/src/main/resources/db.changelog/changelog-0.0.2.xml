@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="20240302022100" author="daria">
+        <preConditions>
+            <tableExists tableName="attraction"/>
+        </preConditions>
+        <addColumn tableName="attraction">
+            <column name="latitude" type="double"/>
+            <column name="longitude" type="double"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="20240302022300" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="restaurant"/>
+            </not>
+        </preConditions>
+        <createTable tableName="restaurant">
+            <column name="restaurant_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="double"/>
+            <column name="phone" type="varchar(64)"/>
+            <column name="email" type="varchar(64)"/>
+            <column name="url" type="varchar(255)"/>
+            <column name="price_level" type="varchar(64)"/>
+            <column name="latitude" type="double"/>
+            <column name="longitude" type="double"/>
+            <column name="location_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240302022500" author="daria">
+        <preConditions>
+            <columnExists tableName="restaurant" columnName="location_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="restaurant"
+                                 baseColumnNames="location_id"
+                                 referencedTableName="location"
+                                 referencedColumnNames="location_id"
+                                 constraintName="fk_restaurant_location"/>
+    </changeSet>
+
+    <changeSet id="20240302022600" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="trip_restaurant"/>
+            </not>
+        </preConditions>
+        <createTable tableName="trip_restaurant">
+            <column name="trip_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="restaurant_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240302022700" author="daria">
+        <preConditions>
+            <columnExists tableName="trip_restaurant" columnName="trip_id"/>
+            <columnExists tableName="trip_restaurant" columnName="restaurant_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="trip_restaurant"
+                                 baseColumnNames="trip_id"
+                                 referencedTableName="trip"
+                                 referencedColumnNames="trip_id"
+                                 constraintName="fk_trip_restaurant_trip"/>
+        <addForeignKeyConstraint baseTableName="trip_restaurant"
+                                 baseColumnNames="restaurant_id"
+                                 referencedTableName="restaurant"
+                                 referencedColumnNames="restaurant_id"
+                                 constraintName="fk_trip_restaurant_restaurant"/>
+    </changeSet>
+
+    <changeSet id="20240302022900" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="hotel"/>
+            </not>
+        </preConditions>
+        <createTable tableName="hotel">
+            <column name="hotel_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="double"/>
+            <column name="url" type="varchar(255)"/>
+            <column name="price_level" type="varchar(64)"/>
+            <column name="price" type="varchar(64)"/>
+            <column name="latitude" type="double"/>
+            <column name="longitude" type="double"/>
+            <column name="location_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240302023100" author="daria">
+        <preConditions>
+            <columnExists tableName="hotel" columnName="location_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="hotel"
+                                 baseColumnNames="location_id"
+                                 referencedTableName="location"
+                                 referencedColumnNames="location_id"
+                                 constraintName="fk_hotel_location"/>
+    </changeSet>
+
+    <changeSet id="20240302023130" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="trip_hotel"/>
+            </not>
+        </preConditions>
+        <createTable tableName="trip_hotel">
+            <column name="trip_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hotel_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240302023200" author="daria">
+        <preConditions>
+            <columnExists tableName="trip_hotel" columnName="trip_id"/>
+            <columnExists tableName="trip_hotel" columnName="hotel_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="trip_hotel"
+                                 baseColumnNames="trip_id"
+                                 referencedTableName="trip"
+                                 referencedColumnNames="trip_id"
+                                 constraintName="fk_trip_hotel_trip"/>
+        <addForeignKeyConstraint baseTableName="trip_hotel"
+                                 baseColumnNames="hotel_id"
+                                 referencedTableName="hotel"
+                                 referencedColumnNames="hotel_id"
+                                 constraintName="fk_trip_hotel_hotel"/>
+    </changeSet>
+
+    <changeSet id="20240302023900" author="daria">
+        <preConditions>
+            <not>
+                <tableExists tableName="cuisine"/>
+            </not>
+        </preConditions>
+        <createTable tableName="cuisine">
+            <column name="cuisine_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="restaurant_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240302024000" author="daria">
+        <preConditions>
+            <columnExists tableName="cuisine" columnName="restaurant_id"/>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="cuisine"
+                                 baseColumnNames="restaurant_id"
+                                 referencedTableName="restaurant"
+                                 referencedColumnNames="restaurant_id"
+                                 constraintName="fk_cuisine_restaurant"/>
+    </changeSet>
+
+    <changeSet id="20240203035730" author="daria">
+        <preConditions>
+            <tableExists tableName="hotel"/>
+        </preConditions>
+        <modifyDataType tableName="hotel" columnName="url" newDataType="varchar(1024)"/>
+    </changeSet>
+
+    <changeSet id="20240203051680" author="daria">
+        <delete tableName="trip_attraction"/>
+        <delete tableName="trip_restaurant"/>
+        <delete tableName="trip_hotel"/>
+        <delete tableName="trip"/>
+        <delete tableName="cuisine"/>
+        <delete tableName="attraction"/>
+        <delete tableName="restaurant"/>
+        <delete tableName="hotel"/>
+    </changeSet>
+
+    <changeSet id="20240302051600" author="daria">
+        <preConditions>
+            <tableExists tableName="location"/>
+        </preConditions>
+        <addColumn tableName="location">
+            <column name="latitude" type="double"/>
+            <column name="longitude" type="double"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="20240203052800" author="daria">
+        <preConditions>
+            <tableExists tableName="restaurant"/>
+        </preConditions>
+        <modifyDataType tableName="restaurant" columnName="url" newDataType="varchar(1024)"/>
+    </changeSet>
+
+</databaseChangeLog>
